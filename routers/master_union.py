@@ -13,34 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ===============================================================================
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from models import wq
+from models import master_union
 from dependencies import get_db
 
-router = APIRouter(prefix="/wq")
+router = APIRouter(prefix="/master_union")
 
 
-@router.get(
-    "/arsenic",
-)
-def get_arsenic(pointid: str = None, db: Session = Depends(get_db)):
-    return get_wq_table(wq.WQ_Arsenic, pointid, db)
-
-
-@router.get(
-    "/calcium",
-)
-def get_calcium(pointid: str = None, db: Session = Depends(get_db)):
-    return get_wq_table(wq.WQ_Calcium, pointid, db)
-
-
-
-def get_wq_table(tbl, pointid, db):
-    q = db.query(tbl)
-    if pointid:
-        q = q.filter(tbl.POINT_ID == pointid)
-    q = q.limit(10)
+@router('')
+def get_wq(pointid: str, db: Session = Depends(get_db)):
+    q = db.query(master_union.MasterUnionWaterQuality)
+    q = q.filter(master_union.MasterUnionWaterQuality.POINT_ID == pointid)
     return q.all()
+
 # ============= EOF =============================================

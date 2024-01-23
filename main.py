@@ -16,6 +16,11 @@
 from fastapi_pagination import add_pagination
 
 from app import app
+
+from routers.wq import router as wq_router
+
+app.include_router(wq_router)
+
 # from routers.location.nmbgmr import router as nmbgmr_location_router
 # from routers.location.public import router as public_location_router
 # from routers.waterlevel.public import router as public_waterlevel_router
