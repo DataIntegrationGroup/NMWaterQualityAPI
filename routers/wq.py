@@ -36,11 +36,12 @@ def get_calcium(pointid: str = None, db: Session = Depends(get_db)):
     return get_wq_table(wq.WQ_Calcium, pointid, db)
 
 
-
 def get_wq_table(tbl, pointid, db):
     q = db.query(tbl)
     if pointid:
         q = q.filter(tbl.POINT_ID == pointid)
     q = q.limit(10)
     return q.all()
+
+
 # ============= EOF =============================================

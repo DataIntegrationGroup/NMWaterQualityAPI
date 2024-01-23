@@ -49,4 +49,6 @@ class MasterUnionWaterQuality(Base):
     WellDepth = Column(Float)
     DataSource = Column(String(255))
     DataSourceInfo = Column(String(255))
+
+
 # ============= EOF =============================================

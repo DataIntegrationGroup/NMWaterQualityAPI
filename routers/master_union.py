@@ -23,10 +23,11 @@ from dependencies import get_db
 router = APIRouter(prefix="/master_union")
 
 
-@router('')
+@router("")
 def get_wq(pointid: str, db: Session = Depends(get_db)):
     q = db.query(master_union.MasterUnionWaterQuality)
     q = q.filter(master_union.MasterUnionWaterQuality.POINT_ID == pointid)
     return q.all()
+
 
 # ============= EOF =============================================

@@ -81,4 +81,6 @@ class WQ_Uranium(Base, WQMixin):
     __tablename__ = "WQ_Uranium"
     Uranium = Column(Float)
     Uranium_Symbol = Column(String(255))
+
+
 # ============= EOF =============================================
